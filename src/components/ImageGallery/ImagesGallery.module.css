@@ -1,0 +1,16 @@
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.imeges {
+  flex-basis: calc(25% - 10px);
+  margin: 5px;
+  width: 350px;
+}
+
+.modal img.hidden {
+  display: none;
+}
