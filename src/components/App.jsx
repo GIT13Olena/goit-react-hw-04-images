@@ -21,8 +21,16 @@ function App() {
       return;
     }
 
-    fetchImages(searchQuery, page);
-  }, [searchQuery, page]);
+    fetchImages(searchQuery, 1); // Викликаємо тільки один раз при монтажі компонента
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (page === 1) {
+      setImages([]);
+    } else {
+      fetchImages(searchQuery, page);
+    }
+  }, [page]);
 
   async function fetchImages(searchQuery, page) {
     setIsLoading(true);
@@ -46,14 +54,11 @@ function App() {
 
   function handleSearchFormSubmit(searchQuery) {
     setSearchQuery(searchQuery);
-    setImages([]);
     setPage(1);
-    fetchImages(searchQuery, 1);
   }
 
   function handleLoadMoreButtonClick() {
     setPage(prevPage => prevPage + 1);
-    fetchImages(searchQuery, page + 1);
   }
 
   function handleImageClick(imageURL) {
