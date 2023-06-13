@@ -27,10 +27,13 @@ function App() {
   useEffect(() => {
     if (page === 1) {
       setImages([]);
+      if (searchQuery !== '') {
+        fetchImages(searchQuery, 1);
+      }
     } else {
       fetchImages(searchQuery, page);
     }
-  }, [page]);
+  }, [page, searchQuery]);
 
   async function fetchImages(searchQuery, page) {
     setIsLoading(true);
