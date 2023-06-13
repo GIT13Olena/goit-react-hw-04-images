@@ -21,8 +21,8 @@ function App() {
       return;
     }
 
-    fetchImages(searchQuery, 1); // Викликаємо тільки один раз при монтажі компонента
-  }, [searchQuery]);
+    fetchImages(searchQuery, page);
+  }, [searchQuery, page]);
 
   useEffect(() => {
     if (page === 1) {
